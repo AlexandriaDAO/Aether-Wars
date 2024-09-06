@@ -3,7 +3,6 @@
 set -x 
 
 #!/bin/bash
-cp dfx_local.json dfx.json
 
 # Step 1: Start dfx
 dfx stop
@@ -20,21 +19,13 @@ dfx deploy xrc --specified-id uf6dk-hyaaa-aaaaq-qaaaq-cai
 
 dfx canister create icrc7 --specified-id fjqb7-6qaaa-aaaak-qc7gq-cai
 dfx build icrc7
-dfx canister update-settings icrc7 --add-controller forhl-tiaaa-aaaak-qc7ga-cai
-
-cargo build --release --target wasm32-unknown-unknown --package nft_manager
-candid-extractor target/wasm32-unknown-unknown/release/nft_manager.wasm > src/nft_manager/nft_manager.did
-
-dfx deploy nft_manager --specified-id forhl-tiaaa-aaaak-qc7ga-cai
+dfx canister update-settings icrc7 --add-controller xj2l7-vyaaa-aaaap-abl4a-cai
 
 # Step 4: Generate all other backend canisters.
 
 # For alex_backend
 cargo build --release --target wasm32-unknown-unknown --package alex_backend
 candid-extractor target/wasm32-unknown-unknown/release/alex_backend.wasm > src/alex_backend/alex_backend.did
-# For bookmarks
-cargo build --release --target wasm32-unknown-unknown --package bookmarks
-candid-extractor target/wasm32-unknown-unknown/release/bookmarks.wasm > src/bookmarks/bookmarks.did
 # For icp_swap
 cargo build --release --target wasm32-unknown-unknown --package icp_swap
 candid-extractor target/wasm32-unknown-unknown/release/icp_swap.wasm > src/icp_swap/icp_swap.did
@@ -44,28 +35,11 @@ candid-extractor target/wasm32-unknown-unknown/release/tokenomics.wasm > src/tok
 
 
 
-
-# for alex_librarian
-cargo build --release --target wasm32-unknown-unknown --package alex_librarian
-candid-extractor target/wasm32-unknown-unknown/release/alex_librarian.wasm > src/alex_librarian/alex_librarian.did
-
-# for vetkd
-cargo build --release --target wasm32-unknown-unknown --package vetkd
-candid-extractor target/wasm32-unknown-unknown/release/vetkd.wasm > src/vetkd/vetkd.did
-
-
 cargo update
 
 dfx deploy alex_backend --specified-id xj2l7-vyaaa-aaaap-abl4a-cai
-dfx deploy bookmarks --specified-id sklez-7aaaa-aaaan-qlrva-cai
 dfx deploy icp_swap --specified-id 5qx27-tyaaa-aaaal-qjafa-cai
 dfx deploy tokenomics --specified-id uxyan-oyaaa-aaaap-qhezq-cai
-
-dfx deploy alex_librarian
-dfx deploy vetkd
-dfx deploy system_api --specified-id s55qq-oqaaa-aaaaa-aaakq-cai
-
-dfx deploy alex_wallet
 
 
 
@@ -88,7 +62,7 @@ dfx deploy --specified-id ryjl3-tyaaa-aaaaa-aaaba-cai icp_ledger_canister --argu
         record {  
           \"$DEFAULT_ACCOUNT_ID\";  
           record {  
-            e8s = 8_681_981_000_000_000 : nat64;  
+            e8s = 9_000_000_000_000_000 : nat64;  
           };  
         };  
       };  
@@ -156,3 +130,10 @@ touch .dfx/local/canisters/ALEX/ALEX.did
 
 npm i
 dfx deploy alex_frontend --specified-id xo3nl-yaaaa-aaaap-abl4q-cai
+
+
+
+# Other Helpful Commands: 
+
+# Send yourself ICP in the UI: 
+# dfx ledger transfer --amount 100_000 --memo 12345 0ced80f89da23d2c9ffa7a32a08964831a31ebfce9ccce4e447de4cfea3b78e7

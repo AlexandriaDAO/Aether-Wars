@@ -8,9 +8,6 @@
   "icp_swap": {
     "ic": "5qx27-tyaaa-aaaal-qjafa-cai"
   },
-  "librarians": {
-    "ic": "ju4sh-3yaaa-aaaap-ahapa-cai"
-  },
   "alex_frontend": {
     "ic": "xo3nl-yaaaa-aaaap-abl4q-cai"
   },
@@ -28,8 +25,5 @@
   },
   "icrc7": {
     "ic": "fjqb7-6qaaa-aaaak-qc7gq-cai"
-  },
-  "nft_manager": {
-    "ic": "forhl-tiaaa-aaaak-qc7ga-cai"
   }
 }

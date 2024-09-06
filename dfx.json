@@ -1,40 +1,9 @@
 {
   "canisters": {
-    "vetkd": {
-      "type": "rust",
-      "package": "vetkd",
-      "candid": "src/vetkd/vetkd.did"
-    },
-    "system_api": {
-      "candid": "src/system_api/vetkd_system_api.did",
-      "package": "vetkd_system_api",
-      "type": "rust"
-    },
-    "alex_librarian": {
-      "type": "rust",
-      "package": "alex_librarian",
-      "candid": "src/alex_librarian/alex_librarian.did"
-    },
-    "alex_wallet": {
-      "type": "azle",
-      "package": "alex_wallet",
-      "main": "src/alex_wallet/src/main.ts",
-      "candid": "src/alex_wallet/alex_wallet.did",
-      "candid_gen": "automatic",
-      "declarations": {
-        "node_compatibility": true
-      }
-    },
     "alex_backend": {
       "candid": "src/alex_backend/alex_backend.did",
       "package": "alex_backend",
       "type": "rust"
-    },
-    "bookmarks": {
-      "candid": "src/bookmarks/bookmarks.did",
-      "package": "bookmarks",
-      "type": "rust",
-      "specified_id": "sklez-7aaaa-aaaan-qlrva-cai"
     },
     "icp_swap": {
       "candid": "src/icp_swap/icp_swap.did",
@@ -46,12 +15,6 @@
       "main": "src/icrc7/main.mo",
       "type": "motoko",
       "specified_id": "fjqb7-6qaaa-aaaak-qc7gq-cai"
-    },
-    "nft_manager": {
-      "candid": "src/nft_manager/nft_manager.did",
-      "package": "nft_manager",
-      "type": "rust",
-      "specified_id":"forhl-tiaaa-aaaak-qc7ga-cai"
     },
     "internet_identity": {
       "type": "pull",

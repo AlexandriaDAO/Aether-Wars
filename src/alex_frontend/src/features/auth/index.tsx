@@ -13,7 +13,6 @@ export default function Auth() {
 	const { authClient } = useSession();
 	const dispatch = useAppDispatch();
 
-	const { filter } = useAppSelector((state) => state.home);
 	const { user, loading } = useAppSelector((state) => state.auth);
 
 	const handleAuthClick = () => {
