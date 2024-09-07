@@ -1,14 +1,65 @@
 # ToDo
 
+New strategy (everything's a NFT, with stats all defined by FTs inside them):
+
+
+Instead of mines, it's a library you need to keep from being burned.
+Aether is the elemental token, convertale to others.
+lbry is the credits you collect from the library.
+
+- Login is done.
+- Profile nft mint (free).
+  - Metadata:
+    Username (String)
+    Faction (String)
+
+
+- Tower NFT (Cost $10, can mint up to 10)
+  - No metadata at all.
+  - Wallet Contains:
+    - Aether (minted)
+    - The lbry token to mine with.
+
+
+
+
+
+    - Walls (EARTH/WATER/FIRE/WIND)
+
+
+- Destroying a Tower
+ - A Elemental of the defending faction, or a creature that attacks the walls.
+ - A Guardian of the attacking faction, or creature that protects the walls.
+
+
+Now we need something that can be used to upgrade the mines.
+
+
+
+
+
+Someone attacks a fire wall, and are from water faction. They 'roll the dice' with 40/60 odds, and if they loose, theirs are burned, if not the profile's are burned. But how?
+  - frontend_attack(faction, amount, tower_id)
+    - backend_attack()
+
+
+- Tower's we're going to move to the swap canister.
+- Then figuer out how to manipulate the swap functions so you can fill topup the miners.
+- Then figuer out how to make them mine autonomously.
+
+
+
+
+Im thinking the best way to do this is as a pure token game, and minimize the backend logic. Only frontend can call backend functions. The rest is just sending tokens around.
+
 - next step: 
   - Make the profile nft
   - make the tower nft.
     - see if you can get it to mine on a periodic basis.
 
+
+(to keep from conflicting minting numbers, profile nfts go up to 10M, and tower nfts must be above 10M)
 (Both NFTs must be non-transferable)
-Make a user profile (*an NFT*).
-  - Username
-  - Faction
 
   *wallet details*
   - Realm walls.
@@ -19,6 +70,12 @@ Aether Towers (*each an NFT*)
   *wallet details*
   - Glphs     (defensive protections)
   - Insignias (doubles the production rate of a tower)
+
+
+
+
+
+For an attack, you send X tokens to the attack() function which sets the under attack bool to true and the attacker feild to none for 15 minutes.
 
 
 

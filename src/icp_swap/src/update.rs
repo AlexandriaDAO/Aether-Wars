@@ -206,7 +206,7 @@ pub async fn burn_LBRY(amount_lbry: u64) -> Result<String, String> {
         Ok(())
     })?;
     ic_cdk::println!("******************ICP sent to caller account*************************");
-    mint_ALEX(amount_lbry, caller).await?;
+    mint_AETHER(amount_lbry, caller).await?;
     Ok("Burn Successfully!".to_string())
 }
 
@@ -297,12 +297,12 @@ async fn burn_token(amount: u64) -> Result<BlockIndex, String> {
     .map_err(|e: TransferFromError| format!("ledger transfer error {:?}", e))
 }
 #[update]
-async fn mint_ALEX(lbry_amount: u64, caller: Principal) -> Result<String, String> {
+async fn mint_AETHER(lbry_amount: u64, caller: Principal) -> Result<String, String> {
     // 1. Asynchronously call another canister function using `ic_cdk::call`.
     let result: Result<(Result<String, String>,), String> =
         ic_cdk::call::<(u64, Principal), (Result<String, String>,)>(
             Principal::from_text(TOKENOMICS_CANISTER_ID).expect("Could not decode the principal."),
-            "mint_ALEX",
+            "mint_AETHER",
             (lbry_amount, caller),
         )
         .await
@@ -341,7 +341,7 @@ async fn deposit_token(amount: u64) -> Result<BlockIndex, String> {
     };
 
     ic_cdk::call::<(TransferFromArgs,), (Result<BlockIndex, TransferFromError>,)>(
-        Principal::from_text(ALEX_CANISTER_ID).expect("Could not decode the principal."),
+        Principal::from_text(AETHER_CANISTER_ID).expect("Could not decode the principal."),
         "icrc2_transfer_from",
         (transfer_from_args,),
     )
@@ -352,11 +352,11 @@ async fn deposit_token(amount: u64) -> Result<BlockIndex, String> {
 }
 
 #[update]
-async fn stake_ALEX(amount: u64) -> Result<String, String> {
+async fn stake_AETHER(amount: u64) -> Result<String, String> {
     let caller = ic_cdk::caller();
     let _guard = CallerGuard::new(caller)?;
     if amount < 100_000_000 {
-        return Err("Minimum 1 Alex is required ".to_string());
+        return Err("Minimum 1 Aether is required ".to_string());
     }
     // Proceed with transfer
     deposit_token(amount).await?;
@@ -376,11 +376,11 @@ async fn stake_ALEX(amount: u64) -> Result<String, String> {
             current_stake.time = ic_cdk::api::time();
             Ok(())
         });
-    TOTAL_ALEX_STAKED.with(|total_staked: &Arc<Mutex<u64>>| -> Result<(), String> {
+    TOTAL_AETHER_STAKED.with(|total_staked: &Arc<Mutex<u64>>| -> Result<(), String> {
         let mut total_staked: std::sync::MutexGuard<u64> = total_staked.lock().unwrap();
         *total_staked = total_staked
             .checked_add(amount)
-            .ok_or("Arithmetic Overflow occurred in TOTAL_ALEX_STAKED.")?;
+            .ok_or("Arithmetic Overflow occurred in TOTAL_AETHER_STAKED.")?;
         Ok(())
     })?;
     ic_cdk::println!("Staked Successfully!");
@@ -410,7 +410,7 @@ async fn withdraw_token(amount: u64) -> Result<BlockIndex, String> {
     };
 
     ic_cdk::call::<(TransferFromArgs,), (Result<BlockIndex, TransferFromError>,)>(
-        Principal::from_text(ALEX_CANISTER_ID).expect("Could not decode the principal."),
+        Principal::from_text(AETHER_CANISTER_ID).expect("Could not decode the principal."),
         "icrc2_transfer_from",
         (transfer_from_args,),
     )
@@ -420,11 +420,11 @@ async fn withdraw_token(amount: u64) -> Result<BlockIndex, String> {
     .map_err(|e| format!("ledger transfer error {:?}", e))
 }
 #[update]
-async fn un_stake_ALEX(amount: u64) -> Result<String, String> {
+async fn un_stake_AETHER(amount: u64) -> Result<String, String> {
     let caller = ic_cdk::caller();
     let _guard = CallerGuard::new(caller)?;
     if amount < 100_000_000 {
-        return Err("Minimum 1 Alex is required ".to_string());
+        return Err("Minimum 1 Aether is required ".to_string());
     }
     // verify caller balance
     if verify_caller_balance(amount) == false {
@@ -446,18 +446,18 @@ async fn un_stake_ALEX(amount: u64) -> Result<String, String> {
         Ok(())
     })?;
 
-    TOTAL_ALEX_STAKED.with(|total_staked| -> Result<(), String> {
+    TOTAL_AETHER_STAKED.with(|total_staked| -> Result<(), String> {
         let mut total_staked: std::sync::MutexGuard<u64> = total_staked.lock().unwrap();
         *total_staked = total_staked
             .checked_sub(amount)
-            .ok_or("Arithmetic underflow occurred in TOTAL_ALEX_STAKED")?;
+            .ok_or("Arithmetic underflow occurred in TOTAL_AETHER_STAKED")?;
         Ok(())
     })?;
     ic_cdk::println!("UnStaked Successfully!");
     Ok("UnStaked Successfully!".to_string())
 }
 #[update]
-async fn un_stake_all_ALEX() -> Result<String, String> {
+async fn un_stake_all_AETHER() -> Result<String, String> {
     let caller = ic_cdk::caller();
     let _guard = CallerGuard::new(caller)?;
     let staked_amount = get_caller_stake_balance();
@@ -480,11 +480,11 @@ async fn un_stake_all_ALEX() -> Result<String, String> {
             .ok_or_else(|| "Arithmetic underflow occurred in STAKES".to_string())?;
         Ok(())
     })?;
-    TOTAL_ALEX_STAKED.with(|total_staked| -> Result<(), String> {
+    TOTAL_AETHER_STAKED.with(|total_staked| -> Result<(), String> {
         let mut total_staked: std::sync::MutexGuard<u64> = total_staked.lock().unwrap();
         *total_staked = total_staked
             .checked_sub(staked_amount)
-            .ok_or("Arithmetic underflow occurred in TOTAL_ALEX_STAKED")?;
+            .ok_or("Arithmetic underflow occurred in TOTAL_AETHER_STAKED")?;
         Ok(())
     })?;
     ic_cdk::println!("UnStaked Successfully!");
@@ -524,19 +524,19 @@ pub fn distribute_reward() -> Result<String, String> {
     if total_icp_allocated < 1000_000_000 {
         return Err("Cannot distribute reward allocated Icp balance less than 10".to_string());
     }
-    let total_staked_alex =
-        TOTAL_ALEX_STAKED.with(|staked: &Arc<Mutex<u64>>| *staked.lock().unwrap()) as u128;
-    if total_staked_alex == 0 {
-        return Err("No ALEX staked, cannot distribute rewards".to_string());
+    let total_staked_aether =
+        TOTAL_AETHER_STAKED.with(|staked: &Arc<Mutex<u64>>| *staked.lock().unwrap()) as u128;
+    if total_staked_aether == 0 {
+        return Err("No AETHER staked, cannot distribute rewards".to_string());
     }
     ic_cdk::println!("Allocated icp2 {}", total_icp_allocated);
-    ic_cdk::println!("total staked alex {}", total_staked_alex);
+    ic_cdk::println!("total staked aether {}", total_staked_aether);
 
-    let icp_reward_per_alex = (total_icp_allocated * SCALING_FACTOR)
-        .checked_div(total_staked_alex)
-        .ok_or("Division failed in icp_reward_per_alex. Please verify it's valid and non-zero")?;
+    let icp_reward_per_aether = (total_icp_allocated * SCALING_FACTOR)
+        .checked_div(total_staked_aether)
+        .ok_or("Division failed in icp_reward_per_aether. Please verify it's valid and non-zero")?;
 
-    ic_cdk::println!("ICP reward per alex (scaled) is {} !", icp_reward_per_alex);
+    ic_cdk::println!("ICP reward per aether (scaled) is {} !", icp_reward_per_aether);
 
     let mut total_icp_reward: u128 = 0;
 
@@ -544,7 +544,7 @@ pub fn distribute_reward() -> Result<String, String> {
         let mut stakes_mut = stakes.borrow_mut();
         for stake in stakes_mut.stakes.values_mut() {
             let reward = (stake.amount as u128)
-                .checked_mul(icp_reward_per_alex)
+                .checked_mul(icp_reward_per_aether)
                 .ok_or_else(|| "Arithmetic overflow occurred in reward.".to_string())?
                 .checked_div(SCALING_FACTOR)
                 .ok_or_else(|| {

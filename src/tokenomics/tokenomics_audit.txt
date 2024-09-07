@@ -3,11 +3,11 @@ ent to an
 
 
 We have:
-- A token_swap canister that burns LBRY and mints ALEX.
-- A tokenomics canister that mints ALEX to the LBRY burners.
+- A token_swap canister that burns LBRY and mints AETHER.
+- A tokenomics canister that mints AETHER to the LBRY burners.
 The big issue is that we're trying to mix two separate ideas: 
-  - One is that actions burn library and reward the librarians/book-owners ALEX.
-  - One is that the librarians/book-owners are paid directly in LBRY, and anyone can mint ALEX by burning lbry.
+  - One is that actions burn library and reward the librarians/book-owners AETHER.
+  - One is that the librarians/book-owners are paid directly in LBRY, and anyone can mint AETHER by burning lbry.
 
   I think those are both good ideas but need to be separated.
 
@@ -16,12 +16,12 @@ I also don't like how hard it would be to track what librarian LBRY is burned on
 
 The Solution!!!
 Instead of users burning library with in-app actions, we'll just have them send them to the NFT or Owner/Libraian Principal.
-Than anyone can separately burn LBRY, and get ICP & ALEX in return.
+Than anyone can separately burn LBRY, and get ICP & AETHER in return.
 
-Now, the big bonus. When ALEX is minted, you did a lot of work to ensure that it is minted to two different people.
-I'd suggest that every time someone burns LBRY to mint themselves ALEX, they also have to mint ALEX to a semi-random librarian.
+Now, the big bonus. When AETHER is minted, you did a lot of work to ensure that it is minted to two different people.
+I'd suggest that every time someone burns LBRY to mint themselves AETHER, they also have to mint AETHER to a semi-random librarian.
 
-I added a get_random_librarian() function in the alex_backend canister for now that you can use.
+I added a get_random_librarian() function in the backend canister for now that you can use.
 I'll later adjust the function to weight librarians based on how much user's like their books/engines/posts, etc.
 This way, if a whale trys to mint themsleves a bunch of tokens, they'll also have to mint a bunch to actual users/contributors.
 I will also flatten out the minting numbers so they're not so heavily weighted for early users.
@@ -35,7 +35,7 @@ We should follow this up with a call. I'm at the end of day and have more to exp
 
 I left some notes below, but those were before deciding here on how to change the specs so I think they'll be readjusted after we change the project a bit more.
 
-mint_ALEX()
+mint_AETHER()
 - This is actually really impressive how you handle multiple lbry at a time and split the calculation across reward blocks.
 I'd just be worried about what happens when mulitple people call at once, so we need a bot prevention mechanism.
 Here's one recommendation:
@@ -43,8 +43,8 @@ Here's one recommendation:
   - For the next 12 hours, 
 
 
-Otherwise, the reason I find this very confusing is you also use mint_ALEX() in tokenomics, with the same name and a different purpose.
-When you use mint_ALEX() in token_swap, and use it to call mint_ALEX() in icp_swap, you the 'owner' and 'author' arguments are the same, so isn't that giving a double mint to the guy who burns the LBRY.
+Otherwise, the reason I find this very confusing is you also use mint_AETHER() in tokenomics, with the same name and a different purpose.
+When you use mint_AETHER() in token_swap, and use it to call mint_AETHER() in icp_swap, you the 'owner' and 'author' arguments are the same, so isn't that giving a double mint to the guy who burns the LBRY.
 
 
 // Requested general changes++
@@ -55,7 +55,7 @@ This occurs in both the tokenomics and icp_swap canisters,
 
 
 // Recommended Tests:
-- get_total_ALEX_minted === icrc7_total_supply ++ 
+- get_total_AETHER_minted === icrc7_total_supply ++ 
 
 
 
@@ -64,7 +64,7 @@ This occurs in both the tokenomics and icp_swap canisters,
 There's a big fork in the road here. ++
 
 - In one direction, LBRY is sent to people to pay for stuff.   
-- In the other direction, LBRY is burned on behalf of people to mint ALEX.
+- In the other direction, LBRY is burned on behalf of people to mint AETHER.
 
 We'll need to use this to our advantage to prevent bot attacks.
 
@@ -76,7 +76,7 @@ Time perhaps for another plan to minting tokens.
 
 I like the nft-based wallets whereby owners are paid LBRY directly.
  
-I also like you can only get ALEX from value bearing platform actions.
+I also like you can only get AETHER from value bearing platform actions.
 
 What if we just mint to people that spend LBRY.
  - The problem with that is everyone will just perform a bunch of inauthentic actions.

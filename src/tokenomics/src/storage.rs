@@ -26,7 +26,7 @@ pub const LBRY_THRESHOLDS: [u64; 18] = [
     61_763_128_000// 61,763,128,000.00
 ];
 
-pub const ALEX_PER_THRESHOLD: [u64; 18] = [
+pub const AETHER_PER_THRESHOLD: [u64; 18] = [
     //upto 4 decimals
     50_000,     // 5.0000
     25_000,     // 2.5000
@@ -75,7 +75,7 @@ pub const ALEX_PER_THRESHOLD: [u64; 18] = [
 //     52_428_800_000_000_000, // 524,288,000.0
 // ];
 
-// pub const ALEX_PER_THRESHOLD: [u64; 23] = [
+// pub const AETHER_PER_THRESHOLD: [u64; 23] = [
 //     //upto 4 decimals
 //     1000_0000, // 1000.0
 //     500_0000,  // 500.0
@@ -101,7 +101,7 @@ pub const ALEX_PER_THRESHOLD: [u64; 18] = [
 //     20,         // 0.002
 //     15,        // 0.0015
 // ];
-// pub const ALEX_PER_THRESHOLD: [u64; 23] = [
+// pub const AETHER_PER_THRESHOLD: [u64; 23] = [
 //     100_000_000_000, // 1000.0
 //     50_000_000_000,  // 500.0
 //     25_000_000_000,  // 250.0
@@ -132,5 +132,5 @@ thread_local! {
       //Tokenomics
      pub static TOTAL_LBRY_BURNED: Arc<Mutex<u64>> = Arc::new(Mutex::new(0));
      pub static CURRENT_THRESHOLD: Arc<Mutex<u32>> = Arc::new(Mutex::new(0));
-     pub static TOTAL_ALEX_MINTED: Arc<Mutex<u64>> = Arc::new(Mutex::new(0));
+     pub static TOTAL_AETHER_MINTED: Arc<Mutex<u64>> = Arc::new(Mutex::new(0));
 }

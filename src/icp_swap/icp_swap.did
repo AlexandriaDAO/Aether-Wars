@@ -21,14 +21,14 @@ service : () -> {
   get_total_icp_avialable : () -> (nat64) query;
   get_total_staked : () -> (nat64) query;
   get_total_unclaimed_icp_reward : () -> (nat64) query;
-  mint_ALEX : (nat64, principal) -> (Result);
+  mint_AETHER : (nat64, principal) -> (Result);
   mint_LBRY : (nat64) -> (Result_1);
   send_icp : (principal, nat64) -> (Result_2);
-  stake_ALEX : (nat64) -> (Result);
+  stake_AETHER : (nat64) -> (Result);
   swap : (nat64) -> (Result);
   transfer_from_user_wallet : (nat64, text) -> (Result);
   transfer_icp_from_user : (nat64, text) -> (Result_2);
-  un_stake_ALEX : (nat64) -> (Result);
-  un_stake_all_ALEX : () -> (Result);
+  un_stake_AETHER : (nat64) -> (Result);
+  un_stake_all_AETHER : () -> (Result);
   withdraw_token : (nat64) -> (Result_1);
 }

@@ -1,4 +1,4 @@
-use crate::{ALLOWED_CALLERS, CURRENT_THRESHOLD, LBRY_THRESHOLDS, TOTAL_LBRY_BURNED, TOTAL_ALEX_MINTED, ALEX_PER_THRESHOLD};
+use crate::{ALLOWED_CALLERS, CURRENT_THRESHOLD, LBRY_THRESHOLDS, TOTAL_LBRY_BURNED, TOTAL_AETHER_MINTED, AETHER_PER_THRESHOLD};
 use candid::Principal;
 use ic_cdk::{caller, query};
 
@@ -11,20 +11,20 @@ pub fn get_total_LBRY_burn() -> u64 {
 }
 
 #[query]
-pub fn get_total_ALEX_minted() -> u64 {
-    TOTAL_ALEX_MINTED.with(|mint| {
+pub fn get_total_AETHER_minted() -> u64 {
+    TOTAL_AETHER_MINTED.with(|mint| {
         let mint: std::sync::MutexGuard<u64> = mint.lock().unwrap();
         *mint
     })
 }
 
 #[query]
-pub fn get_current_ALEX_rate() -> u64 {
+pub fn get_current_AETHER_rate() -> u64 {
     let current_threshold = CURRENT_THRESHOLD.with(|current_threshold| {
         let current_threshold = current_threshold.lock().unwrap();
         *current_threshold
     });
-    ALEX_PER_THRESHOLD[current_threshold as usize]
+    AETHER_PER_THRESHOLD[current_threshold as usize]
 }
 #[query]
 pub fn get_current_LBRY_threshold() -> u64 {

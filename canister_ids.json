@@ -1,29 +1,29 @@
 {
-  "alex_backend": {
-    "ic": "xj2l7-vyaaa-aaaap-abl4a-cai"
-  },
-  "bookmarks": {
-    "ic": "sklez-7aaaa-aaaan-qlrva-cai"
-  },
-  "icp_swap": {
-    "ic": "5qx27-tyaaa-aaaal-qjafa-cai"
-  },
-  "alex_frontend": {
-    "ic": "xo3nl-yaaaa-aaaap-abl4q-cai"
-  },
-  "internet_identity": {
-    "ic": "rdmx6-jaaaa-aaaaa-aaadq-cai"
-  },
-  "tokenomics": {
-    "ic": "uxyan-oyaaa-aaaap-qhezq-cai"
+  "AETHER": {
+    "ic": "7hcrm-4iaaa-aaaak-akuka-cai"
   },
   "LBRY": {
     "ic": "hdtfn-naaaa-aaaam-aciva-cai"
   },
-  "ALEX": {
-    "ic": "7hcrm-4iaaa-aaaak-akuka-cai"
+  "backend": {
+    "ic": "forhl-tiaaa-aaaak-qc7ga-cai"
   },
-  "icrc7": {
+  "aether_frontend": {
+    "ic": "xo3nl-yaaaa-aaaap-abl4q-cai"
+  },
+  "icp_swap": {
+    "ic": "5qx27-tyaaa-aaaal-qjafa-cai"
+  },
+  "internet_identity": {
+    "ic": "rdmx6-jaaaa-aaaaa-aaadq-cai"
+  },
+  "profile_nft": {
     "ic": "fjqb7-6qaaa-aaaak-qc7gq-cai"
+  },
+  "tokenomics": {
+    "ic": "uxyan-oyaaa-aaaap-qhezq-cai"
+  },
+  "tower_nft": {
+    "ic": "rby3s-dqaaa-aaaak-qizqa-cai"
   }
 }

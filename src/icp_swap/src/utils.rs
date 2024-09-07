@@ -7,7 +7,7 @@ use serde::Deserialize;
 
 use crate::{get_stake};
 pub const STAKING_REWARD_PERCENTAGE: u64 = 1000;   //multiply by 100 eg. 10% = 1000
-pub const ALEX_CANISTER_ID: &str = "7hcrm-4iaaa-aaaak-akuka-cai";
+pub const AETHER_CANISTER_ID: &str = "7hcrm-4iaaa-aaaak-akuka-cai";
 pub const LBRY_CANISTER_ID: &str = "hdtfn-naaaa-aaaam-aciva-cai";
 pub const TOKENOMICS_CANISTER_ID: &str = "uxyan-oyaaa-aaaap-qhezq-cai";
 pub const XRC_CANISTER_ID:&str="uf6dk-hyaaa-aaaaq-qaaaq-cai";

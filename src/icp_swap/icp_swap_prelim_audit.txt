@@ -25,22 +25,22 @@ This is because there will likely be no action worth less than 1 hundreth of a p
 # Rectified
 
 
-4. Mint_ALEX()
+4. Mint_AETHER()
 There's a lack of precision when dividing by (actually, I don't understand how you're dividing this. Maybe it's okay if it rounds to some decimal.)
-# In the tokenomics, the ALEX threshold was originally in decimals instead of e8s. That's the reason I was converting it. 
+# In the tokenomics, the AETHER threshold was originally in decimals instead of e8s. That's the reason I was converting it. 
 # Now I have converted the threshold to e8s.
 # Rectified
 
-5. Stake_ALEX()
+5. Stake_AETHER()
 There's no minimum stake.
-I think stakers should have no less than 1 ALEX to participate.
+I think stakers should have no less than 1 AETHER to participate.
 # Rectified
 
-6. un_stake_ALEX()
-Also needs to check for a minimum amount, that is 1ALEX. #Fixed
+6. un_stake_AETHER()
+Also needs to check for a minimum amount, that is 1AETHER. #Fixed
 I think we should also add a withdraw all function, as most of the time people will use this, and in-case there is less than >1UGC it'll have a cleaner withdraw. 
 // need to discuss with client
-# Added function un_stake_all_ALEX
+# Added function un_stake_all_AETHER
 # Rectified
 
 7. set_ratio_LBRY_per_ICP()

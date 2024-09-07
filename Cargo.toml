@@ -1,6 +1,6 @@
 [workspace]
 members = [
-    "src/alex_backend",
+    "src/backend",
     "src/icp_swap",
     "src/tokenomics",
 ]

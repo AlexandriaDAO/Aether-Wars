@@ -41,7 +41,7 @@ pub fn get_stake(principal: Principal) -> Option<Stake> {
 }
 #[query]
 pub fn get_total_staked() -> u64 {
-    TOTAL_ALEX_STAKED.with(|staked| {
+    TOTAL_AETHER_STAKED.with(|staked| {
         let staked: std::sync::MutexGuard<u64> = staked.lock().unwrap();
         *staked
     })
