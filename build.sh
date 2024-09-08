@@ -130,10 +130,6 @@ mkdir -p .dfx/local/canisters/AETHER
 touch .dfx/local/canisters/LBRY/LBRY.did
 touch .dfx/local/canisters/AETHER/AETHER.did
 
-# mkdir -p .dfx/local/canisters/icp_ledger_canister
-# curl https://raw.githubusercontent.com/dfinity/ic/b9a0f18dd5d6019e3241f205de797bca0d9cc3f8/rs/rosetta-api/icp_ledger/ledger.did -o .dfx/local/canisters/icp_ledger_canister/icp_ledger_canister.did
-
-npm i
 dfx deploy aether_frontend --specified-id xo3nl-yaaaa-aaaap-abl4q-cai
 
 
@@ -141,10 +137,7 @@ dfx deploy aether_frontend --specified-id xo3nl-yaaaa-aaaap-abl4q-cai
 # Other Helpful Commands: 
 
 # Send yourself ICP in the UI: 
-dfx ledger transfer --amount 100_000 --memo 12345 5163534db2a1c0c61c7cbb23f328f913052cf10e85c6765757c93fe7a8f0a1b5
-
-
-
+dfx ledger transfer --amount 100_000 --memo 12345 f04ee0f71d94957ef83e282e29ea4fee97d4d2cb3d46eb4401b3ac4357db5b95
 # subnet of choice: opn46-zyspe-hhmyp-4zu6u-7sbrh-dok77-m7dch-im62f-vyimr-a3n2c-4ae
 # dfx canister create tower_nft --next-to fjqb7-6qaaa-aaaak-qc7gq-cai --network ic
 

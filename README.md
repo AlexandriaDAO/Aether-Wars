@@ -1,3 +1,63 @@
+# Tokenomics changes
+
+*profile nft*
+Your profile is a village in your faction's realm, and the goal of the game is to rebuild the Library of Alexandria (discover the truth). You'll need help though, specifically from heaven which you get in the form of MANA by storing Aether reserves in it.
+
+*material nft*
+But you'll want to hire Masons/Scribes/Merchants/Ascetics to help build and protect the village (which are multipliers on your protection, & maybe production?).
+
+*ethereal nft*
+Whenever someone steals from a library, they summon an Elemental, who can destroy the aether reserves of a village.
+
+*burn address*
+Whenever someone adds to their faction's library, they summon a Guardian who watches over their village.
+
+
+
+
+Whenever ETHER is burned, it mints MANA to 3 places:
+  - The village that burned it (attacker/defender).
+  - The most productive village overall.
+  - The most productive village of the faction with the most books.
+
+
+How do you get into the main library to destroy it? Or you just do it with elementals?
+
+
+BOOKS
+
+
+Earth - Materialism - Carpenter 
+Wind - Idealism - Scribe
+Water - Pragmatism - Merchant
+Fire - Existentialism - Ascetic
+
+Materialism
+Idealism
+Pragmatism
+Existentialism
+
+
+Carpenter beats Merchant (stonemasons reveal the weakness of someone locked in an intellectual prison)
+Merchant beats Ascetic (merchants are more practical)
+Ascetic beats Scribe ()
+Scribe beats Carpenter ()
+
+Earth beats Water (blocks)
+Water beats Fire (extinguishes)
+Fire beats Wind (consumes)
+Wind beats Earth (erodes)
+
+
+We need a Town hall type setup for the library that's easy to periodically calculate.
+
+
+
+
+
+- Rewards interval changed to 6 hours.
+
+
 # ToDo
 
 New strategy (everything's a NFT, with stats all defined by FTs inside them):

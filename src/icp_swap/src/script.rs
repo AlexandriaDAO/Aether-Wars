@@ -1,7 +1,7 @@
 use std::time::Duration;
 use crate::{distribute_reward,get_icp_rate_in_cents};
 
-const REWARD_DISTRIBUTION_INTERVAL: Duration = Duration::from_secs(24*60*60); // 1 days in seconds
+const REWARD_DISTRIBUTION_INTERVAL: Duration = Duration::from_secs(6*60*60); // 1 days in seconds
 const PRICE_FETCH_INTERVAL: Duration = Duration::from_secs(7*24*60*60); // 7 days in seconds
 
 #[ic_cdk::init]

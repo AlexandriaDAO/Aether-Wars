@@ -1,6 +1,6 @@
 use std::{cell::RefCell, sync::{Arc, Mutex}};
 
-use candid::{CandidType, Principal};
+use candid::{CandidType, Principal, Nat};
 use ic_cdk::{self, caller};
 use ic_ledger_types::Subaccount;
 use serde::Deserialize;
